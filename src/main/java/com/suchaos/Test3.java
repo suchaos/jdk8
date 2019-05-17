@@ -3,6 +3,7 @@ package com.suchaos;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 @FunctionalInterface
 interface InterfaceTwo {
@@ -38,6 +39,11 @@ public class Test3 {
         list2.forEach(System.out::println);
 
         List<String> list3 = new ArrayList<>();
-        // list.stream().forEach();
+        // list.stream().map(item -> item.toUpperCase()).forEach(item -> System.out.println(item));
+        list.stream().map(String::toUpperCase).forEach(System.out::println);
+
+        Function<String, String> function = String::toUpperCase;
+        Function<String, String> function2 = item -> item.toUpperCase();
+        System.out.println(Arrays.toString(function.getClass().getInterfaces()));
     }
 }
