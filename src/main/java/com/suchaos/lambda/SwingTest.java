@@ -1,4 +1,4 @@
-package com.suchaos;
+package com.suchaos.lambda;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

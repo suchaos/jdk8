@@ -1,4 +1,4 @@
-package com.suchaos;
+package com.suchaos.lambda;
 
 import java.util.Comparator;
 import java.util.function.BiFunction;

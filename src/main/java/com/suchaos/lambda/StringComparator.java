@@ -1,4 +1,4 @@
-package com.suchaos;
+package com.suchaos.lambda;
 
 import java.util.Arrays;
 import java.util.Collections;
