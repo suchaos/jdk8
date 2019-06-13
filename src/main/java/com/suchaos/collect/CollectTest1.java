@@ -1,12 +1,13 @@
 package com.suchaos.collect;
 
+import com.suchaos.lambda.Person;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 /**
  * 使用 collect
@@ -21,7 +22,7 @@ public class CollectTest1 {
         Student student2 = new Student("lisi", 90);
         Student student3 = new Student("wangwu", 100);
         Student student4 = new Student("zhaoliu", 80);
-        Student student5 = new Student("zhaoliu", 20);
+        Student student5 = new Student("zhaoliu", 80);
 
         List<Student> students = Arrays.asList(student1, student2, student3, student4, student5);
 
@@ -61,5 +62,14 @@ public class CollectTest1 {
         Map<String, Optional<Student>> collect3 = students.stream().collect(Collectors.groupingBy(Student::getName,
                 Collectors.minBy(Comparator.comparingInt(Student::getScore))));
         System.out.println(collect2);
+
+
+        Map<String, Student> studentMap = students.stream().
+                collect(groupingBy(Student::getName, collectingAndThen(
+                        maxBy(Comparator.comparingInt(Student::getScore)), Optional::get)));
+
+        Set<String> collect4 = students.stream().filter(student -> student.getName() != null).
+                map(student -> student.getName() + student.getScore()).collect(toSet());
+        System.out.println(collect4);
     }
 }
