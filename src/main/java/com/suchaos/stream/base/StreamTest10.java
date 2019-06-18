@@ -1,4 +1,4 @@
-package com.suchaos.stream;
+package com.suchaos.stream.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
